@@ -25,8 +25,9 @@ SECRET_KEY = 'django-insecure-5=+c*5c*p!cob2m-0&3y0d5g*h#j_7ybx*f9fr)oj34oo=rc=j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+import os
 
+ALLOWED_HOSTS = ['cinepedia.onrender.com']
 
 # Application definition
 
