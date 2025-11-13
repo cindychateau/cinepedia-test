@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-5=+c*5c*p!cob2m-0&3y0d5g*h#j_7ybx*f9fr)oj34oo=rc=j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+import dj_database_url
 import os
 
 ALLOWED_HOSTS = ['cinepedia.onrender.com']
@@ -75,17 +76,23 @@ WSGI_APPLICATION = 'cinepedia.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cinepedia',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '3307'
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'cinepedia',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3307'
+#     }
+# }
 
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600
+    )
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
